@@ -102,7 +102,3 @@ export function parseSortingParams<Obj extends object>(
   }
   return res;
 }
-
-export type OrderByParams<T extends string> = {
-  [key in `${typeof SORT_PREFIX}${T}`]: "asc" | "desc";
-};
