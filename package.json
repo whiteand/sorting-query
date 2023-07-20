@@ -1,0 +1,41 @@
+{
+  "name": "sorting-query",
+  "version": "0.0.1",
+  "description": "An utility to parse and define types of sorting queries",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clear": "rm -rf ./dist",
+    "build": "npm run clear && tsup --config tsup.config.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/whiteand/sorting-query.git"
+  },
+  "exports": {
+    "node": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "default": "./dist/index.mjs"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "keywords": [
+    "sorting",
+    "query",
+    "params"
+  ],
+  "author": "andrewbeletskiy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/whiteand/sorting-query/issues"
+  },
+  "homepage": "https://github.com/whiteand/sorting-query#readme",
+  "devDependencies": {
+    "tsup": "^7.1.0",
+    "typescript": "^5.1.6"
+  }
+}
