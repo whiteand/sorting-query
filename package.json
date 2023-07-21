@@ -1,6 +1,6 @@
 {
   "name": "sorting-query",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "An utility to parse and define types of sorting queries",
   "main": "dist/index.js",
   "scripts": {
