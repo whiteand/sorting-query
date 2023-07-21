@@ -4,6 +4,7 @@ import {
   Comparator,
   SortedColumn,
   SortedPropertiesFromParams,
+  TKey,
 } from "./types";
 
 function opposite<T>(comparator: Comparator<T>) {
@@ -99,6 +100,32 @@ export function parseSortingParams<Obj extends object>(
       key: sortedProperty as SortedPropertiesFromParams<Obj>,
       order,
     });
+  }
+  return res;
+}
+
+export function isValidSortedColumns<T extends TKey>(
+  sortableKeys: readonly T[],
+  sortedColumns: any
+): sortedColumns is SortedColumn<T>[] {
+  if (!Array.isArray(sortedColumns)) return false;
+
+  const s = new Set<TKey>(sortableKeys);
+
+  for (const column of sortedColumns) {
+    if (!column) return false;
+    if (!s.has(column.id)) return false;
+    if (typeof column.desc !== "boolean") return false;
+  }
+  return true;
+}
+
+export function toQueryParams<T extends TKey>(
+  sortedColumns: SortedColumn<T>[]
+): Record<string, string> {
+  const res: Record<string, string> = Object.create(null);
+  for (const { key, order } of sortedColumns) {
+    res[`orderBy.${key.toString()}`] = order;
   }
   return res;
 }

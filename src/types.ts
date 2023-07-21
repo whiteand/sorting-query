@@ -1,8 +1,10 @@
 import { SORT_PREFIX } from "./SORT_PREFIX";
 
+export type TKey = string | number | symbol;
+
 export type Values<T> = T[keyof T];
 
-export type SortedColumn<T extends string | symbol | number> = {
+export type SortedColumn<T> = {
   key: T;
   order: "asc" | "desc";
 };
