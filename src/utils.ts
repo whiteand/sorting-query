@@ -106,9 +106,10 @@ export function parseSortingParams<Obj extends object>(
 
 export function isValidSortedColumns<T extends TKey>(
   sortableKeys: readonly T[],
-  sortedColumns: any
-): sortedColumns is SortedColumn<T>[] {
-  if (!Array.isArray(sortedColumns)) return false;
+  value: any
+): value is SortedColumn<T>[] {
+  if (!Array.isArray(value)) return false;
+  const sortedColumns = value as SortedColumn<T>[];
 
   const s = new Set<TKey>(sortableKeys);
 
