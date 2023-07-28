@@ -114,8 +114,8 @@ export function isValidSortedColumns<T extends TKey>(
 
   for (const column of sortedColumns) {
     if (!column) return false;
-    if (!s.has(column.id)) return false;
-    if (typeof column.desc !== "boolean") return false;
+    if (!s.has(column.key)) return false;
+    if (column.order !== "desc" && column.order !== "asc") return false;
   }
   return true;
 }
